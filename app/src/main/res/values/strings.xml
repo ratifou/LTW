@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LineTowerWar</string>
+    <string name="Quitter">Quitter</string>
+    <string name="menu_1">Jouer</string>
+    <string name="menu_2">Options</string>
+    <string name="menu_3">Quitter</string>
+</resources>
