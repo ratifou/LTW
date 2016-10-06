@@ -5,9 +5,9 @@ package com.example.hugo.test;
  */
 
 public interface Tower {
-    public void upgrade();
-    public void build();
-    public void destroy();
-    public void update();
-    public void draw();
+     void upgrade();
+     void build();
+     void destroy();
+     void update();
+     void draw();
 }
