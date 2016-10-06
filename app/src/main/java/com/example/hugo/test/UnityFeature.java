@@ -11,6 +11,7 @@ import android.graphics.Point;
  */
 
 public class UnityFeature implements Unity {
+
     private Point position;
     private String name;
     private int health;
@@ -22,18 +23,18 @@ public class UnityFeature implements Unity {
     private AnimationManager animManager;
     // Animation;
 
-    public  UnityFeature(Point point, String name, int hp, int speed){
+    public  UnityFeature(Point point, String name, int hp, int speed, int id_idle, int id_walk1, int id_walk2){
         this.position = point;
         this.name = name;
         this.health = hp;
         this.speed = speed;
 
         BitmapFactory bf = new BitmapFactory();
-        Bitmap idleIMG  = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.war3icone);
-        Bitmap walk1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.walk1);
-        Bitmap walk2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.walk2);
+        Bitmap idleIMG  = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_idle);
+        Bitmap walk1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_walk1);
+        Bitmap walk2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_walk2);
 
-        idle = new Animation(new Bitmap[]{idleIMG}, 2.f);
+        idle = new Animation(new Bitmap[]{idleIMG}, 1.f);
         walk_right = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
 /*
 **      Flip on vertical axe a Bitmap Image
@@ -45,7 +46,7 @@ public class UnityFeature implements Unity {
 
         walk_left = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
 
-        animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left/* nord, sud */});
+        animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left});
     }
 
     public void update() {
@@ -54,14 +55,13 @@ public class UnityFeature implements Unity {
         animManager.update();
     }
 
-    @Override
-    public void draw(Canvas canvas) {
-        animManager.draw(canvas, position);
+    public void setPosition(Point position) {
+        this.position = position;
     }
 
     @Override
-    public boolean is_dead(UnityFeature unit) {
-        return false;
+    public void draw(Canvas canvas) {
+        animManager.draw(canvas, position);
     }
 
     @Override

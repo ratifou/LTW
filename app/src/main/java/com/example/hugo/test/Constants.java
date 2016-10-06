@@ -8,9 +8,10 @@ import android.util.DisplayMetrics;
  */
 
 public class Constants {
-    public static int SCREEN_HEIGHT = 840;
-    public static int SCREEN_WIDTH  = 480;
+    public static int SCREEN_HEIGHT;
+    public static int SCREEN_WIDTH;
     public static Context CURRENT_CONTEXT;
-    public static int Map_Block_Size = 70;
+    public static int Map_Block_Size;
     public static int gap = 6;
+    public static int MAX_FPS = 30;
 }

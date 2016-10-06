@@ -1,5 +1,7 @@
 package com.example.hugo.test;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
 /**
@@ -9,12 +11,25 @@ import android.graphics.Rect;
 public class Background {
     private boolean walkable;
     private int towerIndex;
-    private Rect rec;
+    private Rect rect;
+    private Bitmap content;
 
     public Background(boolean walk, int index, Rect rect){
         this.walkable = walk;
         this.towerIndex = index;
-        this.rec = rect;
+        this.rect = rect;
+    }
+
+    public Bitmap getContent() {
+        return content;
+    }
+
+    public Rect getRect() {
+        return rect;
+    }
+
+    public void setContent(Bitmap bitmap) {
+        this.content = bitmap;
     }
 
     public void setWalkable(boolean walkable){
@@ -26,6 +41,6 @@ public class Background {
     }
 
     public void setRec(Rect rec) {
-        this.rec = rec;
+        this.rect = rec;
     }
 }

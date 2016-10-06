@@ -1,5 +1,6 @@
 package com.example.hugo.test;
 
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.view.animation.*;
 
@@ -8,11 +9,10 @@ import android.view.animation.*;
  */
 
 public interface Unity {
-    public void update();
-    public void draw();
+     void update();
+     void draw(Canvas canvas);
 
-    public Point get_position(UnityFeature unit);
-    public int get_next_direction(UnityFeature unit);
-    public Animation get_animation(UnityFeature unit, int index);
-    public boolean is_dead(UnityFeature unit);
+     Point get_position(UnityFeature unit);
+     int get_next_direction(UnityFeature unit);
+     Animation get_animation(UnityFeature unit, int index);
 }

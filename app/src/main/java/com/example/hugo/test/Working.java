@@ -1,24 +1,21 @@
-package com.example.hugo.test;
-
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-/**
- * Created by hugo on 03/10/2016.
- */
+import com.example.hugo.test.Constants;
+import com.example.hugo.test.GameLoop;
 
-public class MapInitThread extends Thread {
+public class Working extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameLoop gameLoop;
-    public Canvas canvas;
+    private Canvas canvas;
     private boolean running = false;
+    private static int MAX_FPS = 30;
 
     long frameTime;
     long sleepTime;
     long targetTime = 1000 / Constants.MAX_FPS;
 
-    public MapInitThread(SurfaceHolder sf, GameLoop gl){
+    public Working(SurfaceHolder sf, GameLoop gl){
         super();
         this.surfaceHolder = sf;
         this.gameLoop = gl;
