@@ -20,4 +20,7 @@ public class Constants {
     public static ArrayList<Bitmap> idlemaps = new ArrayList<>();
     public static ArrayList<Bitmap> walk1maps = new ArrayList<>();
     public static ArrayList<Bitmap> walk2maps = new ArrayList<>();
+    public static ArrayList<Bitmap> tower_1 = new ArrayList<>();
+    public static ArrayList<Bitmap> tower_2 = new ArrayList<>();
+    public static ArrayList<Bitmap> tower_3 = new ArrayList<>();
 }

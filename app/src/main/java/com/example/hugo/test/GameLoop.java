@@ -46,6 +46,11 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
         walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienyellow_walk1));
         walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienyellow_walk2));
         bitmapsIndex++;
+
+        /*
+            Importer TowerFeature, level1, 2 et 3
+         */
+
         manager = new RoundManager();
     }
 

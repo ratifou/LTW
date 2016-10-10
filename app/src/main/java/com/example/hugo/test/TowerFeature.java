@@ -7,6 +7,10 @@ import android.graphics.Rect;
 
 import java.util.ArrayList;
 
+import static com.example.hugo.test.Constants.tower_1;
+import static com.example.hugo.test.Constants.tower_2;
+import static com.example.hugo.test.Constants.tower_3;
+
 /**
  * Created by geoff on 08/10/2016.
  */
@@ -30,15 +34,11 @@ public class TowerFeature {
         this.level = level;
         this.range = range;
         this.name = name;
-        levelbitmaps = new ArrayList<Bitmap>();
+        levelbitmaps = new ArrayList<>();
         this.pos_rec = pos_rec;
         this.build_visual();
     }
 
-    // Ajouter a Constants :
-    //      ArrayList<Bitmap> tower_1;
-    //      ArrayList<Bitmap> tower_2;
-    //      ArrayList<Bitmap> tower_3;
     public void build_visual (){
         levelbitmaps.add(0 ,tower_1.get(towerIndex));
         levelbitmaps.add(1 ,tower_2.get(towerIndex));

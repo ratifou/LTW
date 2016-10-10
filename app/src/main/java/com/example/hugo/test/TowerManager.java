@@ -1,5 +1,6 @@
 package com.example.hugo.test;
 
+import android.graphics.Canvas;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
@@ -26,6 +27,17 @@ public class TowerManager implements Tower {
         add_tower(0, 60/* Par minute */, 1, Constants.Map_Block_Size*3, 30, null, "Mitrailleuse");
         add_tower(1, 20, 1, Constants.Map_Block_Size*6, 100, null, "Canon");
         add_tower(0, 180, 1, Constants.Map_Block_Size*1, 10, null, "Laser");
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        for (TowerFeature tower : towerarray)
+            tower.draw(canvas);
+    }
+
+    @Override
+    public void update() {
+
     }
 
     @Override
