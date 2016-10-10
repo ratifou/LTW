@@ -1,13 +1,15 @@
 package com.example.hugo.test;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import static com.example.hugo.test.Constants.idlemaps;
+import static com.example.hugo.test.Constants.walk1maps;
+import static com.example.hugo.test.Constants.walk2maps;
 
 /*
  * Created by hugo on 03/10/2016.
@@ -15,14 +17,36 @@ import android.view.SurfaceView;
 
 public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
 
-    private int i;
     private MapInitThread init_thread;
-    private RoundManager manager = new RoundManager();
+    private RoundManager manager;
+    private int bitmapsIndex = 0;
 
     public GameLoop(Context context) {
         super(context);
         getHolder().addCallback(this);
         Constants.CURRENT_CONTEXT = context;
+        BitmapFactory bf = new BitmapFactory();
+
+        idlemaps.add(bitmapsIndex, bf.decodeResource(context.getResources() ,R.drawable.alienblue));
+        walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienblue_walk1));
+        walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienblue_walk2));
+        bitmapsIndex++;
+
+        idlemaps.add(bitmapsIndex, bf.decodeResource(context.getResources() ,R.drawable.aliengreen));
+        walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.aliengreen_walk1));
+        walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.aliengreen_walk2));
+        bitmapsIndex++;
+
+        idlemaps.add(bitmapsIndex, bf.decodeResource(context.getResources() ,R.drawable.alienpink));
+        walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienpink_walk1));
+        walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienpink_walk2));
+        bitmapsIndex++;
+
+        idlemaps.add(bitmapsIndex, bf.decodeResource(context.getResources() ,R.drawable.alienyellow));
+        walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienyellow_walk1));
+        walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienyellow_walk2));
+        bitmapsIndex++;
+        manager = new RoundManager();
     }
 
     @Override
@@ -47,7 +71,8 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public boolean OnTouchEvent(MotionEvent event) {
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
         manager.receiveEvent(event);
         return true;
     }

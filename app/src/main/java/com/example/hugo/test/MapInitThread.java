@@ -19,7 +19,6 @@ public class MapInitThread extends Thread {
     long targetTime = 1000 / Constants.MAX_FPS;
 
     public MapInitThread(SurfaceHolder sf, GameLoop gl){
-        super();
         this.surfaceHolder = sf;
         this.gameLoop = gl;
         this.running = true;

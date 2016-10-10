@@ -15,7 +15,7 @@ public class RoundManager implements Round {
 
     public RoundManager(){
         this.roundManager = new ArrayList<>();
-        this.addRound(new TestRound());
+        this.addRound(new FirstRound());
         roundIndex = 0;
     }
 

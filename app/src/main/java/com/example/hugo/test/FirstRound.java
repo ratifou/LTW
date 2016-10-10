@@ -8,24 +8,22 @@ import android.view.MotionEvent;
  * Created by hugo on 06/10/2016.
  */
 
-public class TestRound implements Round{
+public class FirstRound implements Round{
 
     private UnityManager unityManager;
     private BackgroundManager backgroundManager;
 
-    public TestRound() {
+
+
+    public FirstRound() {
         unityManager = new UnityManager();
         backgroundManager = new BackgroundManager(R.drawable.mapcase);
     }
     public void receiveEvent(MotionEvent event) {
         unityManager.setPosition(new Point((int)event .getRawX(),(int)event.getRawY()));
-        backgroundManager.update();
-        if (event.getAction() == MotionEvent.ACTION_DOWN){
-                unityManager.setIndex("Blue Alien");
-        }
-        else if (event.getAction() == MotionEvent.ACTION_UP){
-            unityManager.setIndex("Green Alien");
-        }
+        //    backgroundManager.update(); Gestion clique construction de tour
+        if (event.getAction() == MotionEvent.ACTION_DOWN)
+            unityManager.setIndex("Blue Alien");
     }
 
     public void reload() {

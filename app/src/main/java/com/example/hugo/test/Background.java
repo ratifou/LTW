@@ -19,6 +19,12 @@ public class Background {
         this.towerIndex = index;
         this.rect = rect;
     }
+    public void update(){
+     /*   switch(towerIndex){
+            case 0:
+
+        }*/
+    }
 
     public Bitmap getContent() {
         return content;

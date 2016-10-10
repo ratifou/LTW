@@ -6,6 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
 
+import static com.example.hugo.test.Constants.idlemaps;
+import static com.example.hugo.test.Constants.walk1maps;
+import static com.example.hugo.test.Constants.walk2maps;
+
 /**
  * Created by hugo on 05/10/2016.
  */
@@ -21,30 +25,25 @@ public class UnityFeature implements Unity {
     private Animation walk_right;
     private Animation walk_left;
     private AnimationManager animManager;
-    // Animation;
 
-    public  UnityFeature(Point point, String name, int hp, int speed, int id_idle, int id_walk1, int id_walk2){
+    public  UnityFeature(Point point, String name, int hp, int speed, int index){
         this.position = point;
         this.name = name;
         this.health = hp;
         this.speed = speed;
 
-        BitmapFactory bf = new BitmapFactory();
-        Bitmap idleIMG  = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_idle);
-        Bitmap walk1 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_walk1);
-        Bitmap walk2 = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(), id_walk2);
 
-        idle = new Animation(new Bitmap[]{idleIMG}, 1.f);
-        walk_right = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+        idle = new Animation(new Bitmap[]{idlemaps.get(index)}, 1.f);
+        walk_right = new Animation(new Bitmap[]{walk1maps.get(index), walk2maps.get(index)}, 2.f);
 /*
 **      Flip on vertical axe a Bitmap Image
  */
         Matrix m = new Matrix();
         m.preScale(-1, 1);
-        walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
-        walk2 = Bitmap.createBitmap(walk2, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
+        Bitmap walk1 = Bitmap.createBitmap(walk1maps.get(index), 0, 0, walk1maps.get(index).getWidth(), walk1maps.get(index).getHeight(), m, false);
+        Bitmap walk2 = Bitmap.createBitmap(walk2maps.get(index), 0, 0, walk2maps.get(index).getWidth(), walk2maps.get(index).getHeight(), m, false);
 
-        walk_left = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+        walk_left = new Animation(new Bitmap[]{walk1, walk2}, 2.f);
 
         animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left});
     }
@@ -70,10 +69,7 @@ public class UnityFeature implements Unity {
     }
 
     @Override
-    public int get_next_direction(UnityFeature unit) {
-        return 0;
-    }
-
+    public int get_next_direction(UnityFeature unit) {return 1;}
     @Override
     public Animation get_animation(UnityFeature unit, int index) {
         return null;
