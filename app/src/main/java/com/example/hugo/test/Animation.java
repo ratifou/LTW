@@ -55,5 +55,7 @@ public class Animation {
         if (!isPlayin)
             return;
         canvas.drawBitmap(frames[frameIndex], point.x, point.y, new Paint());
+        if (point.y >= Constants.SCREEN_HEIGHT * 0.9)
+            this.stop();
     }
 }

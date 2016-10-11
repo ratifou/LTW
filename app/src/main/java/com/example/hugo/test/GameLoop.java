@@ -8,6 +8,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import static com.example.hugo.test.Constants.idlemaps;
+import static com.example.hugo.test.Constants.map_case;
 import static com.example.hugo.test.Constants.walk1maps;
 import static com.example.hugo.test.Constants.walk2maps;
 
@@ -26,7 +27,7 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         Constants.CURRENT_CONTEXT = context;
         BitmapFactory bf = new BitmapFactory();
-
+        Constants.map_case = bf.decodeResource(context.getResources(), R.drawable.mapcase);
         idlemaps.add(bitmapsIndex, bf.decodeResource(context.getResources() ,R.drawable.alienblue));
         walk1maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienblue_walk1));
         walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienblue_walk2));
@@ -48,8 +49,15 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
         bitmapsIndex++;
 
         /*
-            Importer TowerFeature, level1, 2 et 3
-         */
+            Importer TowerFeature, level 1, 2 et 3 == > Ordre d'ajout,
+            add_tower(0, 60, 1, Constants.Map_Block_Size*3, 30, null, "Mitrailleuse");
+            add_tower(1, 20, 1, Constants.Map_Block_Size*6, 100, null, "Canon");
+            add_tower(0, 180, 1, Constants.Map_Block_Size*1, 10, null, "Laser");
+            M1 M2 M3
+            C1 C2 C3
+            L1 L2 L3
+            ...
+        */
 
         manager = new RoundManager();
     }

@@ -24,9 +24,10 @@ public class TowerManager implements Tower {
     }
 
     public void init() {
-        add_tower(0, 60/* Par minute */, 1, Constants.Map_Block_Size*3, 30, null, "Mitrailleuse");
-        add_tower(1, 20, 1, Constants.Map_Block_Size*6, 100, null, "Canon");
-        add_tower(0, 180, 1, Constants.Map_Block_Size*1, 10, null, "Laser");
+        add_tower(0, 0, 0, 0,0, new Rect(), "Empty" );
+        add_tower(1, 60/* Par minute */, 1, Constants.Map_Block_Size*3, 30, null, "Mitrailleuse");
+        add_tower(2, 20, 1, Constants.Map_Block_Size*6, 100, null, "Canon");
+        add_tower(3, 180, 1, Constants.Map_Block_Size*1, 10, null, "Laser");
     }
 
     @Override

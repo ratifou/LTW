@@ -34,7 +34,7 @@ public class UnityFeature implements Unity {
 
 
         idle = new Animation(new Bitmap[]{idlemaps.get(index)}, 1.f);
-        walk_right = new Animation(new Bitmap[]{walk1maps.get(index), walk2maps.get(index)}, 2.f);
+        walk_right = new Animation(new Bitmap[]{idlemaps.get(index), walk1maps.get(index), walk2maps.get(index)}, 2.f);
 /*
 **      Flip on vertical axe a Bitmap Image
  */
@@ -43,14 +43,14 @@ public class UnityFeature implements Unity {
         Bitmap walk1 = Bitmap.createBitmap(walk1maps.get(index), 0, 0, walk1maps.get(index).getWidth(), walk1maps.get(index).getHeight(), m, false);
         Bitmap walk2 = Bitmap.createBitmap(walk2maps.get(index), 0, 0, walk2maps.get(index).getWidth(), walk2maps.get(index).getHeight(), m, false);
 
-        walk_left = new Animation(new Bitmap[]{walk1, walk2}, 2.f);
+        walk_left = new Animation(new Bitmap[]{idlemaps.get(index), walk1, walk2}, 2.f);
 
         animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left});
     }
 
     public void update() {
-        int state = get_next_direction(this);
-        animManager.playAnim(state);
+        this.position = new Point(position.x, position.y + speed);
+        animManager.playAnim(0);
         animManager.update();
     }
 

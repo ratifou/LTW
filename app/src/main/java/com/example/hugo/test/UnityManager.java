@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class UnityManager {
     public ArrayList<UnityFeature> Round1;
     private Point left_top_corner = new Point(0,0);
-    private ArrayList<Integer> unitysIndex;
+    private int unitysIndex;
 
     public UnityManager() {
         this.Round1 = new ArrayList<>();
-        unitysIndex = new ArrayList<>();
+        unitysIndex = -1;
         this.init();
     }
 
@@ -28,35 +28,36 @@ public class UnityManager {
     }
 
     public void init(){                              /***/
-        add_new_unit(Round1, "Blue Alien", 100, 200,   0 );
-        add_new_unit(Round1, "Green Alien", 100, 200,  1 );
-        add_new_unit(Round1, "Pink Alien", 100, 200,   2 );
-        add_new_unit(Round1, "Yellow Alien", 100, 200, 3 );
+        add_new_unit(Round1, "Blue Alien",   200,   10,  0 );
+        add_new_unit(Round1, "Green Alien",  200,   20,  1 );
+        add_new_unit(Round1, "Pink Alien",   200,   30,  2 );
+        add_new_unit(Round1, "Yellow Alien", 200,   40,  3 );
     }                                                /***/
                                                   /* Index */
     public void setIndex(String name){
         if (name.equals(("Blue Alien").toString()))
-            unitysIndex.add(0, 1);
+            unitysIndex = 0;
         else if (name.equals(("Green Alien").toString()))
-            unitysIndex.add(1, 1);
+            unitysIndex = 1;
         else if (name.equals(("Pink Alien").toString()))
-            unitysIndex.add(2, 1);
+            unitysIndex = 2;
         else if (name.equals(("Yellow Alien").toString()))
-            unitysIndex.add(3, 1);
+            unitysIndex = 3;
     }
 
-    public void setPosition(Point position) {
-        for (int i = 0; i < unitysIndex.size(); i++)
-            Round1.get(unitysIndex.get(i)).setPosition(position);
+    public void setPosition (Point position) {
+            Round1.get(unitysIndex).setPosition(position);
     }
 
     public void draw(Canvas canvas){
-        for (int i = 0; i < unitysIndex.size(); i++)
-            Round1.get(unitysIndex.get(i)).draw(canvas);
+    //    for (int i = 0; i < unitysIndex.size(); i++)
+        if (unitysIndex >= 0)
+            Round1.get(unitysIndex).draw(canvas);
     }
 
     public void update(){
-        for (int i = 0; i < unitysIndex.size(); i++)
-            Round1.get(unitysIndex.get(i)).update();
+      //  for (int i = 0; i < unitysIndex.size(); i++)
+        if (unitysIndex >= 0)
+            Round1.get(unitysIndex).update();
     }
 }
