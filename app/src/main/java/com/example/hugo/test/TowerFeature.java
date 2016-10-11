@@ -2,6 +2,7 @@ package com.example.hugo.test;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
@@ -45,13 +46,13 @@ public class TowerFeature {
     }
 
     public void build_visual (){
-        levelbitmaps.add(1 ,tower_1.get(towerIndex));
-        levelbitmaps.add(2 ,tower_2.get(towerIndex));
-        levelbitmaps.add(3 ,tower_3.get(towerIndex));
+        levelbitmaps.add(0 ,tower_1.get(towerIndex));
+        levelbitmaps.add(1 ,tower_2.get(towerIndex));
+        levelbitmaps.add(2 ,tower_3.get(towerIndex));
     }
 
     public void draw(Canvas canvas){
-        canvas.drawBitmap(levelbitmaps.get(level-1), null, pos_rec, new Paint());
+    //    canvas.drawBitmap(levelbitmaps.get(level-1), null, pos_rec, new Paint());
     }
     public void update(){
 
@@ -70,5 +71,9 @@ public class TowerFeature {
 
     public int getTowerIndex() {
         return towerIndex;
+    }
+
+    public void setTowerIndex(int towerIndex) {
+        this.towerIndex = towerIndex;
     }
 }

@@ -28,8 +28,10 @@ public class FirstRound implements Round{
                 unityManager.setIndex("Pink Alien");
             else if (event.getRawY() < Constants.SCREEN_HEIGHT * 0.8)
                 unityManager.setIndex("Yellow Alien");
+
+            unityManager.setPosition(new Point((int) event.getRawX(), 0));
+            backgroundManager.update((int)event.getRawX() / Constants.Map_Block_Size, (int)(event.getRawY() - Constants.gap ) / Constants.Map_Block_Size);
         }
-        unityManager.setPosition(new Point((int) event.getRawX(), 0));
     }
 
     public void reload() {

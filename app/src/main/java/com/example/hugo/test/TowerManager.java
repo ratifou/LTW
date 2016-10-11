@@ -1,6 +1,8 @@
 package com.example.hugo.test;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
@@ -32,8 +34,8 @@ public class TowerManager implements Tower {
 
     @Override
     public void draw(Canvas canvas) {
-        for (TowerFeature tower : towerarray)
-            tower.draw(canvas);
+       /* for (TowerFeature tower : towerarray)
+            tower.draw(canvas);*/
     }
 
     @Override
