@@ -24,12 +24,11 @@ public class BackgroundManager{
             for (int j = 0; j < 9; j++)
                 grid[i][j] = new TowerFeature(0,
                         new Rect(
-                                /* left */ (Constants.Map_Block_Size * i),
-                                /* top */  (Constants.gap + Constants.Map_Block_Size * j),
-                                /* right */(Constants.Map_Block_Size * (i + 1)),
-                                /* bottom */(Constants.gap + (Constants.Map_Block_Size * (j + 1)))
+                                /* left */ (Constants.Map_Block_Size * j),
+                                /* top */  (Constants.gap + Constants.Map_Block_Size * i),
+                                /* right */(Constants.Map_Block_Size * (j + 1)),
+                                /* bottom */(Constants.gap + (Constants.Map_Block_Size * (i + 1)))
                         ));
-
     }
 
     public void draw(Canvas canvas){

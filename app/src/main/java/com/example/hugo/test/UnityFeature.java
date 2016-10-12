@@ -44,7 +44,6 @@ public class UnityFeature implements Unity {
         Bitmap walk2 = Bitmap.createBitmap(walk2maps.get(index), 0, 0, walk2maps.get(index).getWidth(), walk2maps.get(index).getHeight(), m, false);
 
         walk_left = new Animation(new Bitmap[]{idlemaps.get(index), walk1, walk2}, 2.f);
-
         animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left});
     }
 
