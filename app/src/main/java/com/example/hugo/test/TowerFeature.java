@@ -18,11 +18,12 @@ import static com.example.hugo.test.Constants.tower_3;
 
 public class TowerFeature {
     private int towerIndex;
+    private Rect pos_rec;
+    private int color = 0;
     private int attack_speed;
     private int level;
     private int range;
     private int attack_damage;
-    private Rect pos_rec;
     public enum type {neutral, fire, frost, electric, wind};
     private String name;
 
@@ -52,10 +53,21 @@ public class TowerFeature {
     }
 
     public void draw(Canvas canvas){
-    //    canvas.drawBitmap(levelbitmaps.get(level-1), null, pos_rec, new Paint());
+        if (color != 0) {
+            Paint paint = new Paint();
+            paint.setColor(Color.rgb(10,200,10));
+            canvas.drawRect(pos_rec, paint);
+            color = 0;
+        }
+        else
+            canvas.drawBitmap(Constants.map_case, null, pos_rec, new Paint());
     }
     public void update(){
+    }
 
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public void upgrade(){

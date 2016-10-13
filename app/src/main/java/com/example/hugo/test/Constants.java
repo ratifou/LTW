@@ -11,8 +11,10 @@ import java.util.ArrayList;
  */
 
 public class Constants {
-    public static int SCREEN_HEIGHT = 1920;
-    public static int SCREEN_WIDTH = 1080;
+    public static int SCREEN_HEIGHT;
+    public static int SCREEN_WIDTH;
+    public static int nb_height = 11;
+    public static int nb_width = 7;
     public static Context CURRENT_CONTEXT;
     public static int Map_Block_Size;
     public static int gap = 6;
