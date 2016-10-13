@@ -53,6 +53,33 @@ public class UnityFeature implements Unity {
         animManager.update();
     }
 
+    //  1 : Droite
+    //  2 : Bas
+    //  3 : Gauche
+    //  4 : Haut ( default else)
+
+    public Point next_pos(Point previous){
+        int horizontal = 0;        // -1 : <=  |  1 : =>
+        int vertical = 0;          // -1 : Up  |  1 : Down
+        int i = previous.x / Constants.Map_Block_Size;
+        int j = (previous.y - Constants.gap) / Constants.Map_Block_Size;
+
+        if (get_way(previous) == 1) {
+            horizontal = 1;
+        }
+        else if (get_way(previous) == 2) {
+            vertical = 1;
+        }
+        else if (get_way(previous) == 3) {
+            horizontal = -1;
+        }
+        else {
+            vertical = -1;
+        }
+        return new Point(previous.x + (Constants.Map_Block_Size * horizontal),
+                         previous.y + (Constants.Map_Block_Size * vertical));
+    }
+
     public void setPosition(Point position) {
         this.position = position;
     }

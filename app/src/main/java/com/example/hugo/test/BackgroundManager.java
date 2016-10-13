@@ -49,4 +49,23 @@ public class BackgroundManager{
         //grid[i][j].setTowerIndex(1);
         grid[j][i].setColor(1);
     }
+
+    public boolean is_right_ok(int i, int j) {
+        if (i >= (Constants.nb_width / 2)) {
+            for (int n = i; n <= nb_width; n++)
+                if (grid[n][j+1].getTowerIndex() == 0)
+                    return true;
+            for (int n = i; n != 0; n--)
+                if (grid[n][j+1].getTowerIndex() == 0)
+                    return true;
+        } else { // Optimisation compliqué pour gagner a peine 1 nanoseconde je pense
+            for (int n = i; n != 0; n--)
+                if (grid[n][j+1].getTowerIndex() == 0)
+                    return true;
+            for (int n = i; n <= nb_width; n++)
+                if (grid[n][j+1].getTowerIndex() == 0)
+                    return true;
+        }
+        return false;
+    }
 }

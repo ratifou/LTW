@@ -1,31 +1,109 @@
-        Init en dur de la grille
+/* TODO
+******************** FONCTIONS ********************
+*   Select unit in range
+*   Attack selected unit ( With 1 tower on the map)
+*   Attack selected unit ( With n tower on the map)
+*   manage health stuffs
+*   manage dying unit
+********************* DESIGN ***********************
+*   Gérer mouvement à droite et mouvement à gauche
+*   Placer tourelle sur clique sur case[i][j]
+*   Ressource Bar en bas : ( test XML dynamique)
+*** Unit picture, stats, gold, barre de progression, bouton menu ...
+*   Pop and Dead Zone
+*   Find a way to fix the clignottement
+********************* IDEAS ***************************
+* Réfléchir au Multi-Threading ( piste pour fix l'affichage )
+TODO
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 0, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 0, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 0, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 0, new Paint());
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 120, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 120, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 120, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 120, new Paint());
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 240, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 240, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 240, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 240, new Paint());
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 360, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 360, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 360, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 360, new Paint());
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 480, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 480, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 480, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 480, new Paint());
 
-        canvas.drawBitmap(init_thread.bitmap, 0, 600, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 110, 600, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 220, 600, new Paint());
-        canvas.drawBitmap(init_thread.bitmap, 330, 600, new Paint());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
