@@ -22,6 +22,5 @@ public class Running extends Activity {
         Constants.SCREEN_HEIGHT = dm.heightPixels;
         Constants.SCREEN_WIDTH = dm.widthPixels;
         setContentView(new GameLoop(this));
-
     }
 }
