@@ -6,7 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
 
+import static com.example.hugo.test.Constants.SCREEN_HEIGHT;
+import static com.example.hugo.test.Constants.gap;
 import static com.example.hugo.test.Constants.idlemaps;
+import static com.example.hugo.test.Constants.nb_height;
 import static com.example.hugo.test.Constants.walk1maps;
 import static com.example.hugo.test.Constants.walk2maps;
 
@@ -14,27 +17,22 @@ import static com.example.hugo.test.Constants.walk2maps;
  * Created by hugo on 05/10/2016.
  */
 
-public class UnityFeature implements Unity {
+public class UnityFeature /* implements Unity */{
 
     private Point position;
     private String name;
     private int health;
     private int speed;
+    private Animation animations;
 
-    private Animation idle;
-    private Animation walk_right;
-    private Animation walk_left;
-    private AnimationManager animManager;
-
-    public  UnityFeature(Point point, String name, int hp, int speed, int index){
+    public  UnityFeature(Point point/*, String name, int hp,*/, int speed, int index){
         this.position = point;
-        this.name = name;
-        this.health = hp;
+      /*  this.name = name;
+        this.health = hp;*/
         this.speed = speed;
 
-
-        idle = new Animation(new Bitmap[]{idlemaps.get(index)}, 1.f);
-        walk_right = new Animation(new Bitmap[]{idlemaps.get(index), walk1maps.get(index), walk2maps.get(index)}, 2.f);
+        Bitmap[] idle = {idlemaps.get(index)};
+        Bitmap[] walk_right = {idlemaps.get(index), walk1maps.get(index), walk2maps.get(index)};
 /*
 **      Flip on vertical axe a Bitmap Image
  */
@@ -43,61 +41,36 @@ public class UnityFeature implements Unity {
         Bitmap walk1 = Bitmap.createBitmap(walk1maps.get(index), 0, 0, walk1maps.get(index).getWidth(), walk1maps.get(index).getHeight(), m, false);
         Bitmap walk2 = Bitmap.createBitmap(walk2maps.get(index), 0, 0, walk2maps.get(index).getWidth(), walk2maps.get(index).getHeight(), m, false);
 
-        walk_left = new Animation(new Bitmap[]{idlemaps.get(index), walk1, walk2}, 2.f);
-        animManager = new AnimationManager(new Animation[]{idle, walk_right, walk_left});
+        Bitmap[] walk_left = {idlemaps.get(index), walk1, walk2};
+        animations = new Animation(walk_left, walk_right, idle, 0.5f);
+        animations.setSpeed(speed);
+
     }
 
     public void update() {
-        this.position = new Point(position.x, position.y + speed);
-        animManager.playAnim(0);
-        animManager.update();
+//        int i = position.x / Constants.Map_Block_Size;
+//        int j = (position.y - Constants.gap )/ Constants.Map_Block_Size;
+//        int way = Constants.soluce[j][i];
+        animations.update();
     }
 
-    //  1 : Droite
-    //  2 : Bas
-    //  3 : Gauche
-    //  4 : Haut ( default else)
-
-    public Point next_pos(Point previous){
-        int horizontal = 0;        // -1 : <=  |  1 : =>
-        int vertical = 0;          // -1 : Up  |  1 : Down
-        int i = previous.x / Constants.Map_Block_Size;
-        int j = (previous.y - Constants.gap) / Constants.Map_Block_Size;
-
-        if (get_way(previous) == 1) {
-            horizontal = 1;
-        }
-        else if (get_way(previous) == 2) {
-            vertical = 1;
-        }
-        else if (get_way(previous) == 3) {
-            horizontal = -1;
-        }
-        else {
-            vertical = -1;
-        }
-        return new Point(previous.x + (Constants.Map_Block_Size * horizontal),
-                         previous.y + (Constants.Map_Block_Size * vertical));
+    public Animation getAnimations() {
+        return animations;
     }
 
     public void setPosition(Point position) {
         this.position = position;
     }
 
-    @Override
     public void draw(Canvas canvas) {
-        animManager.draw(canvas, position);
+        animations.draw(canvas, position);
+        position = animations.getPoint();
     }
 
-    @Override
-    public Point get_position(UnityFeature unit) {
-        return null;
-    }
-
-    @Override
-    public int get_next_direction(UnityFeature unit) {return 1;}
-    @Override
-    public Animation get_animation(UnityFeature unit, int index) {
-        return null;
+    public boolean is_on_map(){
+        if (this.position.y >= (Constants.gap +( Constants.nb_height * Constants.Map_Block_Size)))
+            return false;
+        else
+            return true;
     }
 }

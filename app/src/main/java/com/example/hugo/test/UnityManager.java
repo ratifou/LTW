@@ -13,51 +13,54 @@ import java.util.ArrayList;
 
 public class UnityManager {
     public ArrayList<UnityFeature> Round1;
-    private Point left_top_corner = new Point(0,0);
-    private int unitysIndex;
+    public ArrayList<UnityFeature> Inventaire;
+    private Point left_top_corner = new Point(0, 0);
 
     public UnityManager() {
         this.Round1 = new ArrayList<>();
-        unitysIndex = -1;
+        this.Inventaire = new ArrayList<>();
         this.init();
     }
 
-    public void add_new_unit(ArrayList round, String name, int health, int speed, int index){
-        UnityFeature unit = new UnityFeature(left_top_corner, name, health ,speed, index);
-        round.add(index, unit);
+    public void add_new_unit(ArrayList round/*, String name, int health*/, int speed, int index) {
+        UnityFeature unit = new UnityFeature(left_top_corner/*, name, health*/, speed, index);
+        round.add(unit);
     }
 
-    public void init(){                              /***/
-        add_new_unit(Round1, "Blue Alien",   200,   10,  0 );
-        add_new_unit(Round1, "Green Alien",  200,   20,  1 );
-        add_new_unit(Round1, "Pink Alien",   200,   30,  2 );
-        add_new_unit(Round1, "Yellow Alien", 200,   40,  3 );
-    }                                                /***/
-                                                  /* Index */
-    public void setIndex(String name){
+    public void init() {                                /***/
+        add_new_unit(Inventaire/*, "Blue Alien",   200*/, 5, 0);
+        add_new_unit(Inventaire/*, "Green Alien",  200*/, 10, 1);
+        add_new_unit(Inventaire/*, "Pink Alien",   200*/, 15, 2);
+        add_new_unit(Inventaire/*, "Yellow Alien", 200*/, 20, 3);
+    }                                                   /***/
+                                                     /* Index */
+
+    public void setIndex(String name, int x) {
         if (name.equals(("Blue Alien").toString()))
-            unitysIndex = 0;
+            add_new_unit(Round1, 5, 0);
         else if (name.equals(("Green Alien").toString()))
-            unitysIndex = 1;
+            add_new_unit(Round1, 10, 1);
         else if (name.equals(("Pink Alien").toString()))
-            unitysIndex = 2;
+            add_new_unit(Round1, 15, 2);
         else if (name.equals(("Yellow Alien").toString()))
-            unitysIndex = 3;
+            add_new_unit(Round1, 20, 3);
+        Round1.get(Round1.size()- 1).getAnimations().setMove_index(2);
+        Round1.get(Round1.size()- 1).setPosition(new Point(x, Constants.gap));
+        System.out.println("NEW UNIT ADDED !");
     }
 
-    public void setPosition (Point position) {
-            Round1.get(unitysIndex).setPosition(position);
+    public void draw(Canvas canvas) {
+        for (UnityFeature unity : Round1)
+            unity.draw(canvas);
     }
 
-    public void draw(Canvas canvas){
-    //    for (int i = 0; i < unitysIndex.size(); i++)
-        if (unitysIndex >= 0)
-            Round1.get(unitysIndex).draw(canvas);
-    }
-
-    public void update(){
-      //  for (int i = 0; i < unitysIndex.size(); i++)
-        if (unitysIndex >= 0)
-            Round1.get(unitysIndex).update();
+    public void update() {
+        for (UnityFeature unity : Round1) {
+            unity.update();
+            if (unity.is_on_map() == false) {
+                Round1.remove(unity);
+                System.out.println("NEW UNIT REMOVED !");
+            }
+        }
     }
 }

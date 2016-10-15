@@ -8,13 +8,13 @@
 ********************* DESIGN ***********************
 *   Gérer mouvement à droite et mouvement à gauche
 *   Placer tourelle sur clique sur case[i][j]
-*   Ressource Bar en bas : ( test XML dynamique)
+*   Ressource Bar en bas : (test XML dynamique)
 *** Unit picture, stats, gold, barre de progression, bouton menu ...
 *   Pop and Dead Zone
 *   Find a way to fix the clignottement
 ********************* IDEAS ***************************
 * Réfléchir au Multi-Threading ( piste pour fix l'affichage )
-TODO
+*/ TODO
 
 
 

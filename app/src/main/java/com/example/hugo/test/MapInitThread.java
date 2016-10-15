@@ -1,6 +1,5 @@
 package com.example.hugo.test;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
@@ -37,15 +36,17 @@ public class MapInitThread extends Thread {
             canvas = null;
             try {
                 canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder) {
+                synchronized (canvas) {
                     this.gameLoop.draw(canvas);
                     this.gameLoop.update();
-                    surfaceHolder.unlockCanvasAndPost(canvas);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            finally {
+                if (canvas != null)
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+            }
             frameTime = System.currentTimeMillis() - startTime;
             sleepTime = targetTime - frameTime;
             if (sleepTime > 0)

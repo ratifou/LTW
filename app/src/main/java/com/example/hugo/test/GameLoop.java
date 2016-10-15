@@ -3,12 +3,14 @@ package com.example.hugo.test;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import static com.example.hugo.test.Constants.idlemaps;
 import static com.example.hugo.test.Constants.map_case;
+import static com.example.hugo.test.Constants.tower_1;
 import static com.example.hugo.test.Constants.walk1maps;
 import static com.example.hugo.test.Constants.walk2maps;
 
@@ -19,7 +21,8 @@ import static com.example.hugo.test.Constants.walk2maps;
 public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
 
     private MapInitThread init_thread;
-    private RoundManager manager;
+    private UnityManager unityManager;
+    private BackgroundManager backgroundManager;
     private int bitmapsIndex = 0;
 
     public GameLoop(Context context) {
@@ -48,6 +51,10 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
         walk2maps.add(bitmapsIndex, bf.decodeResource(context.getResources(), R.drawable.alienyellow_walk2));
         bitmapsIndex++;
 
+        tower_1.add(0, bf.decodeResource(context.getResources(), R.drawable.lock_blue));
+        tower_1.add(1, bf.decodeResource(context.getResources(), R.drawable.lock_green));
+        tower_1.add(2, bf.decodeResource(context.getResources(), R.drawable.lock_red));
+        tower_1.add(3, bf.decodeResource(context.getResources(), R.drawable.lock_yellow));
         /*
             Importer TowerFeature, level 1, 2 et 3 == > Ordre d'ajout,
             add_tower(0, 60, 1, Constants.Map_Block_Size*3, 30, null, "Mitrailleuse");
@@ -59,7 +66,8 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
             ...
         */
 
-        manager = new RoundManager();
+        unityManager = new UnityManager();
+        backgroundManager = new BackgroundManager();
     }
 
     @Override
@@ -86,16 +94,27 @@ public class GameLoop extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        manager.receiveEvent(event);
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            int x = (int) event.getRawX();
+            if (event.getRawY() < Constants.SCREEN_HEIGHT * 0.2)
+                unityManager.setIndex("Blue Alien", x);
+            else if (event.getRawY() < Constants.SCREEN_HEIGHT * 0.4)
+                unityManager.setIndex("Green Alien", x);
+            else if (event.getRawY() < Constants.SCREEN_HEIGHT * 0.6)
+                unityManager.setIndex("Pink Alien", x);
+            else if (event.getRawY() < Constants.SCREEN_HEIGHT * 0.8)
+                unityManager.setIndex("Yellow Alien", x);
+        }
+        backgroundManager.update((int) (event.getRawY() + Constants.gap) / Constants.Map_Block_Size, (int) event.getRawX() / Constants.Map_Block_Size);
         return true;
     }
 
-    public void update(){
-        manager.update();
+    public void update() {
+        unityManager.update();
     }
 
-    public void draw (Canvas canvas){
-        super.draw(canvas);
-        manager.draw(canvas);
+    public void draw(Canvas canvas){
+        backgroundManager.draw(canvas);     // Background
+        unityManager.draw(canvas);          // Foreground
     }
 }

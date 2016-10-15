@@ -27,15 +27,5 @@ public class Menu extends Activity{
                 startActivity(jouer_intent);
             }
         });
-/*
-        Button options_button = (Button) findViewById(R.id.menu_2);
-        options_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("Retour boutons", "Bouton options !");
-                Intent options_intent =  new Intent(Menu.this, Options.class);
-                startActivity(options_intent);
-            }
-        });*/
     }
 }

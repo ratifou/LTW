@@ -18,7 +18,7 @@ public class Constants {
     public static Context CURRENT_CONTEXT;
     public static int Map_Block_Size;
     public static int gap = 6;
-    public static int MAX_FPS = 25;
+    public static int MAX_FPS = 30;
     public static Bitmap map_case;
     public static ArrayList<Bitmap> idlemaps = new ArrayList<>();
     public static ArrayList<Bitmap> walk1maps = new ArrayList<>();
@@ -26,4 +26,5 @@ public class Constants {
     public static ArrayList<Bitmap> tower_1 = new ArrayList<>();
     public static ArrayList<Bitmap> tower_2 = new ArrayList<>();
     public static ArrayList<Bitmap> tower_3 = new ArrayList<>();
+    public static int[][] soluce = new int[nb_height][nb_width];
 }

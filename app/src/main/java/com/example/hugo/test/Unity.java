@@ -11,8 +11,7 @@ import android.view.animation.*;
 public interface Unity {
      void update();
      void draw(Canvas canvas);
-
-     Point get_position(UnityFeature unit);
-     int get_next_direction(UnityFeature unit);
+     Point get_position();
+     void next_pos(int way);
      Animation get_animation(UnityFeature unit, int index);
 }

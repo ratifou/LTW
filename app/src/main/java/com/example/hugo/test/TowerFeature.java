@@ -53,18 +53,14 @@ public class TowerFeature {
     }
 
     public void draw(Canvas canvas){
-        if (color != 0) {
-            Paint paint = new Paint();
-            paint.setColor(Color.rgb(10,200,10));
-            canvas.drawRect(pos_rec, paint);
-            color = 0;
-        }
-        else
+        if (towerIndex == 0)
             canvas.drawBitmap(Constants.map_case, null, pos_rec, new Paint());
-    }
-    public void update(){
+        else
+            canvas.drawBitmap(tower_1.get(towerIndex % 3), null, pos_rec, new Paint());
     }
 
+    public void update(){
+    }
 
     public void setColor(int color) {
         this.color = color;
